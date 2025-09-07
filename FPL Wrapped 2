@@ -1,0 +1,9 @@
+# FPL Wrapped Slides 🎉
+
+Spotify Wrapped–style slides for Fantasy Premier League.  
+Works in **Lovable** or any Next.js app.
+
+## Usage
+- Import the repo into Lovable  
+- Run `npm install` inside Lovable terminal  
+- Visit `/LeagueReportDemo` to preview slides
