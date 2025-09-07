@@ -1,0 +1,14 @@
+import { toPng } from "html-to-image";
+import download from "downloadjs";
+
+export const exportSlide = async (id: string, filename: string) => {
+  const node = document.getElementById(id);
+  if (!node) return;
+
+  try {
+    const dataUrl = await toPng(node, { cacheBust: true });
+    download(dataUrl, filename);
+  } catch (err) {
+    console.error("Export failed", err);
+  }
+};
