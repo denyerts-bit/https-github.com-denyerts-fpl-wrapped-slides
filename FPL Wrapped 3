@@ -1,0 +1,35 @@
+"use client";
+import { motion } from "framer-motion";
+import { exportSlide } from "../lib/useExport";
+
+type Props = {
+  id: string;
+  title: string;
+  subtitle?: string;
+  big?: string | number;
+};
+
+export default function WrappedSlide({ id, title, subtitle, big }: Props) {
+  return (
+    <motion.div
+      id={id}
+      className="relative w-screen h-screen flex flex-col justify-center items-center 
+                 bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-600 
+                 text-white p-8 snap-start"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <h1 className="text-4xl font-extrabold mb-4 drop-shadow">{title}</h1>
+      {subtitle && <p className="text-xl mb-2 opacity-90">{subtitle}</p>}
+      {big && <div className="text-7xl font-black mt-6">{big}</div>}
+
+      <button
+        onClick={() => exportSlide(id, `${title}.png`)}
+        className="absolute bottom-6 right-6 bg-white text-black px-4 py-2 rounded-lg shadow-md"
+      >
+        Save 📸
+      </button>
+    </motion.div>
+  );
+}
