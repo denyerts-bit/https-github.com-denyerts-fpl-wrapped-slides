@@ -1,0 +1,57 @@
+"use client";
+import WrappedSlide from "../components/WrappedSlide";
+
+export default function LeagueReportDemo() {
+  const leagueData = {
+    best_transfer: {
+      entry: { player_name: "Alice" },
+      transfer: { in_name: "Haaland", out_name: "Watkins" },
+      impact: 56,
+    },
+    most_captain_points: {
+      entry: { player_name: "Bob" },
+      points: 612,
+    },
+    most_clean_sheets: {
+      entry: { player_name: "Charlie" },
+      count: 18,
+    },
+    differentials: [
+      { player_id: "Palmer", total_points: 210 },
+      { player_id: "Gordon", total_points: 185 },
+      { player_id: "Toney", total_points: 120 },
+    ],
+  };
+
+  return (
+    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+      <WrappedSlide id="slide1" title="League Wrapped" subtitle="Season Highlights" />
+      <WrappedSlide
+        id="slide2"
+        title="Best Transfer 🔄"
+        subtitle={leagueData.best_transfer.entry.player_name}
+        big={`${leagueData.best_transfer.transfer.in_name} ➝ ${leagueData.best_transfer.transfer.out_name} (+${leagueData.best_transfer.impact} pts)`}
+      />
+      <WrappedSlide
+        id="slide3"
+        title="Captain King 👑"
+        subtitle={leagueData.most_captain_points.entry.player_name}
+        big={`${leagueData.most_captain_points.points} pts`}
+      />
+      <WrappedSlide
+        id="slide4"
+        title="Clean Sheet Machine 🧼"
+        subtitle={leagueData.most_clean_sheets.entry.player_name}
+        big={`${leagueData.most_clean_sheets.count}`}
+      />
+      <WrappedSlide
+        id="slide5"
+        title="Top Differentials 🌟"
+        subtitle="Hidden gems"
+        big={leagueData.differentials
+          .map((d) => `${d.player_id} (${d.total_points} pts)`)
+          .join(", ")}
+      />
+    </div>
+  );
+}
